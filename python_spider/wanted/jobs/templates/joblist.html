@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{% load i18n %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block content %}
+
+
+{% if job_list %}
+    <ul>
+        {% for job in job_list %}
+        <li>{{job.type_name}} <a href="/job/{{job.id}}" style="color: blue" >{{job.job_name}}</a> {{job.city_name}}</li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+<p> no jobs are available</p>
+
+{% endif %}
+
+{% endblock %}
